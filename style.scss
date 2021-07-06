@@ -14,7 +14,7 @@ img {
   max-width: 100%;
 }
 header + section {
-  margin-top: 90px;
+  margin-top: $width-m;
   @media only screen and (max-width: 768px) {
     margin-top: 63px;
   }
@@ -52,7 +52,8 @@ header {
     .sidebar {
       .ham {
         text-align: center;
-        background: #04383d;
+        background: #fff;
+        box-shadow: 2px 5px 3px 3px #aaa;
         padding: 32px;
         cursor: pointer;
 
@@ -64,7 +65,7 @@ header {
           line-height: 70px;
         }
         img {
-          filter: invert(1);
+          // filter: invert(1);
           display: inline-block;
           vertical-align: middle;
         }
@@ -89,9 +90,9 @@ header {
         visibility: hidden;
         opacity: 0;
         transition: 0.3s all ease-in-out;
-        height: calc(100vh - 90px);
+        height: calc(100vh - $width-m);
         background: #fff;
-      box-shadow: 2px 5px 3px 3px #aaa;
+        box-shadow: 2px 5px 3px 3px #aaa;
 
         &.open2 {
           transform: translateX(0);
@@ -111,74 +112,43 @@ header {
             text-align: center;
             padding: 25px 0;
             list-style: none;
-
             position: relative;
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
             cursor: pointer;
             transition: 0.3s ease-in-out;
+            a {
+              text-decoration: none;
+              color: #000;
+            }
+            &:before {
+              position: absolute;
+              content: "";
+              top: 0;
+              left: 0;
+              width: 0;
+              height: 100%;
+              background: blue;
+              z-index: 1;
+              transition: 0.3s ease-in-out;
+            }
             &:hover {
-              background: lightsteelblue;
-              border-left: 5px solid blue;
-
-              svg {
-                //  transform: scale(1);
-                visibility: visible;
-                opacity: 1;
+              background: lightskyblue;
+              &:before {
+                width: 5px;
+              }
+              &:a {
+                font-weight: 900;
               }
             }
             @media only screen and (max-width: 768px) {
               padding: 15px 0;
               font-size: 8px;
             }
-
             img {
               display: block;
               margin: 0 auto 5px;
-            }
-            svg {
-              width: 10px;
-              height: 10px;
-              position: absolute;
-              top: 50%;
-              right: 15px;
-              visibility: hidden;
-              opacity: 0;
-              transition: 0.3s all ease-in-out;
-              transform: rotate(-90deg) translateX(50%);
-            }
-            a {
-              text-decoration: none;
-              color: grey;
-            }
-            .submenu {
-              position: absolute;
-              right: $width-lg;
-              top: -1px;
-              visibility: hidden;
-              opacity: 0;
-              transform: translateX(-100%);
-              transition: 0.3s all ease-in-out;
-
-              @media only screen and (max-width: 768px) {
-                right: $width-m;
-              }
-              ul {
-                display: flex;
-                flex-wrap: wrap;
-                width: 300px;
-                @media only screen and (max-width: 768px) {
-                  width: 200px;
-                }
-                li {
-                  flex: 1 0 125px;
-                  border: 1px solid #013b41;
-                  @media only screen and (max-width: 768px) {
-                    flex: 1 0 100px;
-                  }
-                }
-              }
             }
           }
         }
@@ -190,9 +160,14 @@ header {
 .vid_sec {
   padding-left: 200px;
   padding-top: 35px;
+  a{
+    font-weight: bold;
+  color: grey;
+  text-decoration: none;
+  }
   @media only screen and (max-width: 768px) {
     padding-left: 100px;
-    margin-top: 90px;
+    margin-top: $width-m;
   }
   @media only screen and (max-width: 512px) {
     padding-left: 50px;
@@ -206,14 +181,18 @@ header {
   .vid_wrap {
     max-width: 80%;
     padding: 25px 100px;
+    
     input[type="text"] {
       width: 100%;
       border: none;
       box-shadow: 1px 1px 5px -2px;
-      // display: block;
+      font-weight: bold;
       padding: 15px;
       border-radius: 10px;
       color: #000;
+      &:focus {
+        outline: none;
+      }
     }
     @media only screen and (max-width: 768px) {
       padding: 10px;
@@ -229,6 +208,8 @@ header {
       background: #fff;
       color: grey;
       padding: 30px;
+      border-radius: 3px;
+      box-shadow: 1px 1px 5px -2px;
     }
   }
 }
